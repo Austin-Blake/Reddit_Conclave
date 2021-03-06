@@ -1,0 +1,26 @@
+.card{
+    width: 80vw;
+    margin: 1rem auto 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.836);
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2, h3 {
+    font-size: 1.3rem;
+    padding: 0rem .1rem 0rem .1rem;
+    width: 90%;
+}
+
+a{
+    font-size: 1rem;
+    color: orange;
+}

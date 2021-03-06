@@ -1,36 +1,28 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer } from 'react';
 import axios from 'axios';
 
-import './App.css';
 import { PostList } from '../Presentation/PostList';
-
+import '../Presentation/PostList.css';
 
 const initialState = {
-    field: '',
     term: '',
     isFetched: false,
   postData: {},
   success: '',
     error: ''
 };
-  
 
   const reducer = (state, action) => {
     switch (action.type) {
-      case 'field': {
-        return {
-          ...state,
-          [action.field]: action.value,
-        };
-      }
       case 'term': {
         return {
           ...state,
-          term: action.term,
+          term: action.payload,
         };
       }
       case 'success': {
         return {
+          ...state,
           isFetched: true,
           postData: action.payload,
           error: '',
@@ -51,9 +43,8 @@ const initialState = {
 
 
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const { postData, term, isFetched } = state;
-  console.log(term)
+ const [state, dispatch] = useReducer(reducer, initialState);
+  const {isFetched, term } = state;
 
   const search = (e) => {
     e.preventDefault();
@@ -67,22 +58,31 @@ const App = () => {
   }
   
   return (
-      <>
+    <>
       <form >
-                <h1>Reddit Now Search</h1>
-                <label htmlFor="search">What are You looking for?</label>
-                <input
-                    type="text"
-                    value={term}
-                    onChange={e => dispatch({
-                        type: 'field',
-                        field: 'term',
-                        value: e.target.value,
-                    })
-                    } 
-                />
-                <button onClick={search}>Search</button>
-            </form>
+          <h1>Reddit Concave</h1>
+          <label htmlFor="search">What Are You looking For?</label>
+          <input
+          type="text"
+          value={term}
+          onChange={e => dispatch({
+            type:'term',
+            payload: e.target.value})}
+        />
+         <label for="cars">Top SubReddits</label>
+<select id="categories" name="categories" onChange={e => dispatch({
+            type:'term',
+  payload: e.currentTarget.value
+})}>
+          <option value="none"></option>
+  <option value="Humor">Humor</option>
+  <option value="Pics">Pictures</option>
+  <option value="Entertainment">Entertainment</option>
+  <option value="News">News</option>
+</select> 
+          <button onClick={search}>Search</button>
+      </form>
+      
       {isFetched ? 
         <PostList
           data={state}
