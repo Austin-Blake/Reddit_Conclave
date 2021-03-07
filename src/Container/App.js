@@ -1,8 +1,9 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import axios from 'axios';
 
 import { PostList } from '../Presentation/PostList';
 import '../Presentation/PostList.css';
+import './App.css';
 
 const initialState = {
     term: '',
@@ -50,17 +51,26 @@ const App = () => {
     e.preventDefault();
     axios.get(`https://www.reddit.com/search.json?q=${term || "popular"}`)
       .then(response => {
-        console.log(response)
         dispatch({ type: 'success', payload: response.data })
       }).catch(error => {
         dispatch({ type: 'error' })
       })
   }
+
+  useEffect((term) => {
+    axios.get(`https://www.reddit.com/search.json?q=${term || "popular"}`)
+      .then(response => {
+        dispatch({ type: 'success', payload: response.data })
+      }).catch(error => {
+        dispatch({ type: 'error' })
+      })
+  }, []);
   
   return (
     <>
-      <form >
-          <h1>Reddit Concave</h1>
+      <form className='nav'>
+        <h1>REDDIT CONCAVE</h1>
+        <div className='search-container'>
           <label htmlFor="search">What Are You looking For?</label>
           <input
           type="text"
@@ -68,18 +78,20 @@ const App = () => {
           onChange={e => dispatch({
             type:'term',
             payload: e.target.value})}
-        />
-         <label for="cars">Top SubReddits</label>
-<select id="categories" name="categories" onChange={e => dispatch({
+          />
+          <label for="SubReddits">Top SubReddits</label>
+        
+          <select id="categories" name="categories" onChange={e => dispatch({
             type:'term',
   payload: e.currentTarget.value
 })}>
-          <option value="none"></option>
-  <option value="Humor">Humor</option>
-  <option value="Pics">Pictures</option>
-  <option value="Entertainment">Entertainment</option>
-  <option value="News">News</option>
-</select> 
+          <option value=""></option>
+          <option value="Humor">Humor</option>
+          <option value="Pics">Pictures</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="News">News</option>
+          </select> 
+        </div>
           <button onClick={search}>Search</button>
       </form>
       

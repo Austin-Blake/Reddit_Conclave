@@ -1,3 +1,20 @@
+# Built with React
+Utilizing functional Components, Hooks(useReducer, useState, useEffect), and Axios.
+useReducer is a concept from Redux where all your state is managed from a single reducer function. and dispatching state back.
+# Features
+This application uses the UnOfficial Reddit API to display content.
+The content includes: 
+- SubReddit (category)
+- Title
+- Link to Article/Post
+- Author
+- Up Vote Count & Ratio
+- Total Awards Received
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
