@@ -79,7 +79,7 @@ const App = () => {
             type:'term',
             payload: e.target.value})}
           />
-          <label for="SubReddits">Top SubReddits</label>
+          <label htmlFor="SubReddits">Top SubReddit's</label>
         
           <select id="categories" name="categories" onChange={e => dispatch({
             type:'term',
