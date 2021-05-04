@@ -1,0 +1,24 @@
+.link-btn{
+    border:none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    width: 13em;
+    padding: 1em;
+
+}
+.subreddits{
+    list-style: none;
+    background-color: black;
+    color: white;
+    
+}
+.subreddits li {
+    border-bottom: 1px solid red;
+    padding: 1rem;
+}
+.subreddits img{
+    width: 3rem;
+    height: 3rem;
+    padding: 0 2rem;
+    }

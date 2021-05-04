@@ -1,0 +1,28 @@
+.stats{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 1.3rem;
+    height: 100%;
+}
+
+.arrow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    list-style: none;
+}
+.upArrow{
+    font-size: 2rem;
+    color: green;
+}
+.award{
+    display: flex;
+    padding: 1rem 0;
+    list-style: none;
+}
+.award :first-child{
+    color: blue;
+}

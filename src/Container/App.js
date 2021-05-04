@@ -1,107 +1,89 @@
-import React, { useReducer, useEffect } from 'react';
-import axios from 'axios';
+import React, {useEffect, useState} from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// import axios from 'axios';
+import SubReddits from '../Components/SubReddits/SubReddits'
+import { PostList } from '../Components/Posts/PostList/PostList';
+import Provider from '../Context/Provider';
 
-import { PostList } from '../Presentation/PostList';
-import '../Presentation/PostList.css';
+import '../Components/Posts/PostList/PostList.css';
 import './App.css';
+import ScrollToTop from '../Components/ScrollToTop/ScrollToTop';
+import SearchBar from '../Components/Header/SearchBar/SearchBar';
+import SubredditDropDwn from '../Components/SubredditDropDwn/SubredditDropDwn'
 
-const initialState = {
-    term: '',
-    isFetched: false,
-  postData: {},
-  success: '',
-    error: ''
-};
-
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case 'term': {
-        return {
-          ...state,
-          term: action.payload,
-        };
-      }
-      case 'success': {
-        return {
-          ...state,
-          isFetched: true,
-          postData: action.payload,
-          error: '',
-        };
-      }
-      case 'error': {
-        return {
-          ...state,
-          error: 'Failed to fetch data',
-          isFetched: false,
-        };
-      }
-      default:
-        break;
-    }
-    return state;
-  }
+  
 
 
 const App = () => {
- const [state, dispatch] = useReducer(reducer, initialState);
-  const {isFetched, term } = state;
+  // const my_Context = useContext(MyContext);
+  // const {subreddits } = my_Context;
 
-  const search = (e) => {
-    e.preventDefault();
-    axios.get(`https://www.reddit.com/search.json?q=${term || "popular"}`)
-      .then(response => {
-        dispatch({ type: 'success', payload: response.data })
-      }).catch(error => {
-        dispatch({ type: 'error' })
-      })
-  }
-
-  useEffect((term) => {
-    axios.get(`https://www.reddit.com/search.json?q=${term || "popular"}`)
-      .then(response => {
-        dispatch({ type: 'success', payload: response.data })
-      }).catch(error => {
-        dispatch({ type: 'error' })
-      })
-  }, []);
   
+  //subreddits.json // 
+  // useEffect((term) => {
+  //   axios.get(`https://www.reddit.com/subreddits.json`)
+  //     .then(response => {
+  //       dispatch({ type: 'success', payload: response.data })
+  //     }).catch(error => {
+  //       dispatch({ type: 'error' })
+  //     })
+  // }, []);
+  
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
+
+  const updateMedia = () => {
+    setDesktop(window.innerWidth > 640);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
+
+//   return (
+//     <div>
+//       {isDesktop ? (
+//         <div>I show on 1451px or higher</div>
+//       ) : (
+//         <div>I show on 1450px or lower</div>
+//       )}
+//     </div>
+//   );
+// }
+  
+
+    // const data = postData.data.children;
+    // const dataArray = data.map(post => post.data);
+
   return (
-    <>
-      <form className='nav'>
-        <h1>REDDIT CONCAVE</h1>
-        <div className='search-container'>
-          <label htmlFor="search">What Are You looking For?</label>
-          <input
-          type="text"
-          value={term}
-          onChange={e => dispatch({
-            type:'term',
-            payload: e.target.value})}
-          />
-          <label htmlFor="SubReddits">Top SubReddit's</label>
-        
-          <select id="categories" name="categories" onChange={e => dispatch({
-            type:'term',
-  payload: e.currentTarget.value
-})}>
-          <option value=""></option>
-          <option value="Humor">Humor</option>
-          <option value="Pics">Pictures</option>
-          <option value="Entertainment">Entertainment</option>
-          <option value="News">News</option>
-          </select> 
-        </div>
-          <button onClick={search}>Search</button>
-      </form>
-      
-      {isFetched ? 
-        <PostList
-          data={state}
-        /> : null
-      }
-      </>
+    <Provider>
+      <Router>
+        <ScrollToTop/>
+        <SearchBar />
+        {isDesktop ? null : <SubredditDropDwn/>}
+        <main className='main'>
+        <Switch>
+          <Route path="/" exact component={PostList}/>
+          <Route path="/subreddits" exact component={SubReddits}/>
+          </Switch>
+          {isDesktop ? (
+            <SubReddits />
+      ) : null
+        }
+          
+        </main>
+      </Router>
+    </Provider>
   );
-};
+  };
 
 export default App;
+      
+  
+
+  // {isFetched ?
+  //   <>
+  //   <PostList
+  //     data={state}
+  //     /><SubReddits data={state}/> </>: null
+  // }

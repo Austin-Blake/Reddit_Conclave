@@ -1,0 +1,73 @@
+.postlist{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card{
+    display: grid;
+    grid-template-columns: 10% 90%;
+    grid-template-rows: 1fr .1fr .1fr;
+    grid-template-areas:
+                       'votes title'
+                       'footer footer';
+    background-color: white;
+    width: 70vw;
+    margin: 3rem 0;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-radius: 5% 25% 5% 25%;
+}
+
+.post-title-underline{
+    width: 50%;
+    height: 1px;
+    margin: 0 auto;
+    color: black;
+    background-color: black;
+    
+}
+.post-title {
+    font-size: 1.5rem;
+    color: red;
+    padding: 2rem 3rem 0 2rem;
+    text-align: center;
+    width: 40rem;
+}
+.votes{
+    grid-area: votes;
+}
+.post{
+    grid-area: title;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+}
+
+.post-description{
+    width: 30rem;
+}
+.comment-footer{
+    grid-area: footer;
+}
+.comment-container{
+    grid-area: comments;
+}
+
+a{
+    cursor: pointer;
+    font-size: 1rem;
+    color: orange;
+}
+
+a:hover{
+    transform: scale(1.3);
+}
+
+
+img{
+    width:50%;
+    height: 50%;
+}

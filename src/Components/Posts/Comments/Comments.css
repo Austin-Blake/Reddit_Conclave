@@ -1,0 +1,21 @@
+.comment-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.post-comment{
+    width: 70%;
+    margin: 1rem 0;
+    background-color: rgb(206, 204, 202);
+    text-align: center;
+}
+.comment-details{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin: 0 0 2rem 0;
+}
+.comment-details :first-child{
+    font-weight: bolder;
+}

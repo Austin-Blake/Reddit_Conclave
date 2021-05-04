@@ -1,0 +1,28 @@
+
+.comment-footer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+.comment-list{
+    border-top: 1px solid black;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+}
+.comment-list li {
+    font-size: 1.3rem;
+}
+.comment-list :nth-child(3){
+    color: rgb(255, 148, 34);
+    cursor: pointer;
+}
+
+.post-author{
+    color: red;
+    font-weight: bolder;
+}
