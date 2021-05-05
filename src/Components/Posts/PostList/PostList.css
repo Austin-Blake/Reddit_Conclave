@@ -8,20 +8,23 @@
 .card{
     display: grid;
     grid-template-columns: 10% 90%;
-    grid-template-rows: 1fr .1fr .1fr;
+    grid-template-rows: 20rem 3fr 10rem;
     grid-template-areas:
-                       'votes title'
+                       '... title'
+                       'comment comment'
                        'footer footer';
     background-color: white;
-    width: 70vw;
+    width: 40vw;
     margin: 3rem 0;
     background-color: rgb(255, 255, 255);
     color: black;
     border-radius: 5% 25% 5% 25%;
+    position: relative;
+    height: fit-content;
 }
 
 .post-title-underline{
-    width: 50%;
+    width: 30vw;
     height: 1px;
     margin: 0 auto;
     color: black;
@@ -33,7 +36,7 @@
     color: red;
     padding: 2rem 3rem 0 2rem;
     text-align: center;
-    width: 40rem;
+    width: 25vw;
 }
 .votes{
     grid-area: votes;
@@ -51,9 +54,6 @@
 }
 .comment-footer{
     grid-area: footer;
-}
-.comment-container{
-    grid-area: comments;
 }
 
 a{

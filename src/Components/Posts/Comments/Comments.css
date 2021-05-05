@@ -1,11 +1,12 @@
 .comment-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 .post-comment{
-    width: 70%;
+    width: 100%;
     margin: 1rem 0;
     background-color: rgb(206, 204, 202);
     text-align: center;

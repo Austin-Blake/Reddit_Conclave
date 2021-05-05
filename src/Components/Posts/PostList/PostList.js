@@ -24,22 +24,23 @@ export const PostList = () => {
                     <section
                         className='card'
                         key={post.id}
-                        id={post.id}
+                        
                     >
-                        <Votes
+                            <Votes
                             upVote={post.ups}
                             awards={post.total_awards_received}
                             className='votes'
-                        />
-                        <div className='post'>
+                            />
+                        <div id={post.id} className='post'>
                             <h1 className='post-title'>{post.title.substring(0, 400)}</h1>
                             <div className='post-title-underline'></div>
                         
-                            <p className='post-description'>{post.selftext.substring(0, 600) + (post.selftext.length > 600 ? " [...]" : "")}</p>
-                            {post.selftext.length > 600 ? <p>read more...</p> : null}
+                            <p className='post-description'>{post.selftext.substring(0, 400) + (post.selftext.length > 400 ? " [...]" : "")}</p>
+                            {post.selftext.length > 400 ? <p>read more...</p> : null}
                             <img src={post.url || new Error()} alt={post.title} onError={(e) => e.target.style.display = "none"}/>
                         </div>
-                        <PostFooter postId={post.id}
+                        <PostFooter
+                            postId={post.id}
                             postAuthor={post.author}
                             postCreated={post.created_utc}
                             postPermalink={post.permalink}

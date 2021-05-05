@@ -16,80 +16,29 @@
 
 @media screen and (min-width: 300px) and (max-width: 640px) {
     .card {
-        width: 90vw;
+        height: 100%;
+        width: 80vw;
         margin: 3rem auto;
         grid-template-columns: 100%;
+        grid-template-rows: 8rem 14rem 2fr 6rem;
         grid-template-areas: 'title'
                             'votes'
+                            'comments'
                             'footer';
         border-radius: 2%;
     }
-    .post-title{
-        width: 90vw;
-        padding: 0;
-        font-size: 1.2rem;
-    }
-    .post-description{
-        width: 80vw;
-        padding: 0 1rem;
-        line-height: 1.5rem;
-        font-size: .8rem;
-    }
-    .search-container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid black;
-        padding: 1rem;
-        margin: 1rem;
-        
-    }
     .stats{
-        flex-direction: row;
-        justify-content: center;
-        height: 100%;
-        justify-content: center;
+        position: unset;
     }
-    .arrow, .award{
-        padding: 0 2rem;
-    }
-    .comment-list{
-        justify-content: space-between;
-        width: 100%;
-        padding: 0 .5rem;
-    }
-    .comment-list :nth-child(1){
-        font-size: 1rem;
-    }
-    .comment-list :nth-child(2){
-        font-size: .5rem;
-    }
-    .post-comment{
-        width: 95%;
-    }
-    .comment-body{
-        padding: .5rem;
-    }
-}
-@media screen and (min-width: 640px) and (max-width: 1000px){
-    .card {
-        width: 70vw;
-        margin: 3rem auto;
-        
-    }
-    .subreddits{
-        width: 10rem;
-        text-align: center;
-        padding: 0;
-    }
-    .subreddits li{
-        padding:0;
+    .arrow{
+    grid-area: votes;
     }
     .post-title{
+        grid-area: title;
         width: 45vw;
         padding: 0;
         font-size: 1.2rem;
+        margin: 2rem auto;
     }
     .post-description{
         width: 50vw;
@@ -106,9 +55,15 @@
         padding: 1rem;
         margin: 1rem;
     }
+    .comment-component{
+        grid-area: comments;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
     .comment-list{
         justify-content: space-between;
-        width: 100%;
+        width: 60vw;
         padding: 0 1.2rem;
     }
     .comment-list :nth-child(1){
@@ -118,7 +73,66 @@
         font-size: .8rem;
     }
     .post-comment{
-        width: 95%;
+        width: 70vw;
+    }
+    .comment-body{
+        padding: .5rem;
+    }
+    .comment-footer{
+        grid-area: footer;
+    }
+}
+@media screen and (min-width: 640px) and (max-width: 1200px){
+    .card {
+        width: 70vw;
+        margin: 3rem auto;
+        
+    }
+    .arrow{
+    
+    }
+    .subreddits{
+        width: 10rem;
+        text-align: center;
+        padding: 0;
+    }
+    .subreddits li{
+        padding:0;
+    }
+    .post-title{
+        width: 45vw;
+        padding: 0;
+        font-size: 1.2rem;
+        margin-left: 1.5rem;
+    }
+    .post-description{
+        width: 40vw;
+        padding: 0 1rem;
+        line-height: 1.5rem;
+        font-size: 1rem;
+    }
+    .search-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid black;
+        padding: 1rem;
+        margin: 1rem;
+    }
+    .comment-list{
+        justify-content: space-between;
+        width: 40vw;
+        padding: 0 1.2rem;
+    }
+    .comment-list :nth-child(1){
+        font-size: 1rem;
+    }
+    .comment-list :nth-child(2){
+        font-size: .8rem;
+    }
+    .post-comment{
+        width: 50vw;
     }
     .comment-body{
         padding: .5rem;

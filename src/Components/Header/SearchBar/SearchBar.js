@@ -4,7 +4,7 @@ import './SearchBar.css';
 
 export default function SearchBar() {
     const my_Context = useContext(MyContext);
-    const { term, dispatch, subreddits, activeSubreddit} = my_Context;
+    const { term, dispatch, activeSubreddit} = my_Context;
 
     const search = (e) => {
         // e.preventDefault();

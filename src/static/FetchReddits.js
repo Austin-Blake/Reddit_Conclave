@@ -21,6 +21,7 @@ export const getPostComments = async (permalink) => {
 
   return json[1].data.children.map((subreddit) => subreddit.data);
 };
+
 export const dateCalculator = (created) => {
   const currentDate = Date.now();
   const postDate = new Date(created * 1000);
@@ -33,16 +34,17 @@ export const dateCalculator = (created) => {
   const dateDifferenceInMinutes = dateDifferenceInTime / (1000 * 60);
 
   if (dateDifferenceInMonths > 12) {
-      return "more than a year ago";
+    return "more than a year ago";
   } else if (dateDifferenceInMonths >= 1) {
-      return Math.round(dateDifferenceInMonths) + " months ago";
+    return Math.round(dateDifferenceInMonths) + " months ago";
   } else if (dateDifferenceInDays >= 1) {
-      return Math.round(dateDifferenceInDays) + " days ago";
+    return Math.round(dateDifferenceInDays) + " days ago";
   } else if (dateDifferenceInHours >= 1) {
-      return Math.round(dateDifferenceInHours) + " hours ago";
+    return Math.round(dateDifferenceInHours) + " hours ago";
   } else if (dateDifferenceInMinutes >= 1) {
-      return Math.round(dateDifferenceInMinutes) + " minutes ago";
+    return Math.round(dateDifferenceInMinutes) + " minutes ago";
   } else {
-      return "less than a minute ago";
+    return "less than a minute ago";
   }
-}
+};
+

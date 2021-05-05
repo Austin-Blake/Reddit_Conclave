@@ -25,12 +25,13 @@ export default function SubReddits() {
       dispatch({type: 'success', payload: response});
     }), [activeSubreddit, dispatch]);
   
+  const logo = 'https://svgshare.com/i/2SL.svg';
 
     return (
         <>
             <ul className='subreddits'>
                 {subreddits.map(sub => (
-                    <li key={sub.id} onClick={() => dispatch({ type: 'activeSubreddit', payload: sub.url })}><img src={sub.icon || new Error()} alt='' onError={(e) => e.target.src='https://svgshare.com/i/2SL.svg'}/><button className='link-btn'>{sub.name.toUpperCase()}</button></li>
+                    <li key={sub.id} onClick={() => dispatch({ type: 'activeSubreddit', payload: sub.url })}><img src={sub.icon || logo} onError={(e) => e.target.src= 'src/Images/72ppi/Asset 3.png'}/><button className='link-btn'>{sub.name.toUpperCase()}</button></li>
                 ))}
             </ul>
         </>

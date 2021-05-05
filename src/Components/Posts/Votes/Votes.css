@@ -1,17 +1,19 @@
 .stats{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     font-size: 1.3rem;
-    height: 100%;
+    height: fit-content;
+    position: absolute;
+    top: -2rem;
+    left: 1rem;
 }
 
 .arrow{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem 0;
+    padding: 1rem 0 0 0;
     list-style: none;
 }
 .upArrow{
@@ -20,7 +22,7 @@
 }
 .award{
     display: flex;
-    padding: 1rem 0;
+    padding: 0 0 1rem 0;
     list-style: none;
 }
 .award :first-child{
