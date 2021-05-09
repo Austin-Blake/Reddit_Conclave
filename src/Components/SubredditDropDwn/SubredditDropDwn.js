@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import MyContext from '../../Context/MyContext';
-import {getSubreddits} from '../../static/FetchReddits'
+import {getSubreddits, getSubredditPosts} from '../../static/FetchReddits'
 import './SubredditDropDwn.css';
 
 export default function SubredditDropDwn() {
     const my_Context = useContext(MyContext);
-  const { subreddits, dispatch } = my_Context;
+  const { subreddits, dispatch, activeSubreddit } = my_Context;
   
   useEffect(() => {
     getSubreddits().then(json => {
@@ -20,6 +20,11 @@ export default function SubredditDropDwn() {
     });
 }, [dispatch]);
 
+useEffect(() => getSubredditPosts(activeSubreddit)
+.then(response => {
+  dispatch({type: 'success', payload: response});
+}), [activeSubreddit, dispatch]);
+  
     return (
         <form className='dropdown'>
           <label className='category-label' htmlFor="SubReddits">Top SubReddit's</label>

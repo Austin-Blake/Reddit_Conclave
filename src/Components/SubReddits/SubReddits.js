@@ -20,10 +20,10 @@ export default function SubReddits() {
         });
     }, [dispatch]);
 
-    useEffect(() => getSubredditPosts(activeSubreddit)
-    .then(response => {
-      dispatch({type: 'success', payload: response});
-    }), [activeSubreddit, dispatch]);
+    // useEffect(() => getSubredditPosts(activeSubreddit)
+    // .then(response => {
+    //   dispatch({type: 'success', payload: response});
+    // }), [activeSubreddit, dispatch]);
   
   const logo = 'https://svgshare.com/i/2SL.svg';
 

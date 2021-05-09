@@ -16,11 +16,11 @@
 
 @media screen and (min-width: 300px) and (max-width: 640px) {
     .card {
-        height: 100%;
+        height: fit-content; /*100%*/
         width: 80vw;
         margin: 3rem auto;
         grid-template-columns: 100%;
-        grid-template-rows: 8rem 14rem 2fr 6rem;
+        grid-template-rows:1fr -1fr 1fr 6rem;
         grid-template-areas: 'title'
                             'votes'
                             'comments'
@@ -32,10 +32,11 @@
     }
     .arrow{
     grid-area: votes;
+    margin: 3rem;
     }
     .post-title{
         grid-area: title;
-        width: 45vw;
+        width: 70vw;
         padding: 0;
         font-size: 1.2rem;
         margin: 2rem auto;
@@ -63,11 +64,11 @@
     }
     .comment-list{
         justify-content: space-between;
-        width: 60vw;
-        padding: 0 1.2rem;
+        width: 70vw;
+        
     }
     .comment-list :nth-child(1){
-        font-size: 1rem;
+        font-size: .7rem;
     }
     .comment-list :nth-child(2){
         font-size: .8rem;
@@ -82,6 +83,8 @@
         grid-area: footer;
     }
 }
+
+
 @media screen and (min-width: 640px) and (max-width: 1200px){
     .card {
         width: 70vw;

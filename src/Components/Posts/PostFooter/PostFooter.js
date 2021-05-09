@@ -10,40 +10,41 @@ export default function PostFooter(props) {
 
     const onCommentsClicked = () => {
         const postComments = document.getElementById(props.postId);
-
         if (active) {
-            const commentBox = document.querySelector(`.card:nth-child(3)`);
+            const commentBox = document.querySelector(`.card`).nextElementSibling;
             commentBox.style.display = "none";
+            titleRef.current.parentNode.scrollIntoView({ behavior: 'auto', block: "start" });
             setActive(false);
         } else {
-            postComments.style.display = "block";
-            console.log("postComment", postComments)
+            postComments.style.display = "flex";
+            
             setActive(true);
         }
     }
 
     function handleBackClick() {
-        titleRef.current.scrollIntoView({ behavior: 'auto', block: "nearest" })
+            titleRef.current.scrollIntoView({ behavior: 'smooth', block: "start" });
     }
 
     function activateCallBacks() {
+        
+        handleBackClick();
         onCommentsClicked();
-        handleBackClick()
 
     }
 
     return (
         <>
             
-            <div id={props.postId} className='comment-component' ref={titleRef}>
+            <div id={props.postId} className='comment-component'  >
             {active ? <Comments
                 permalink={props.postPermalink}
                 id={props.postId}
-                visible={props.visible}
+                    visible={props.visible}
                 /> : null}
             </div>
-            <div className='comment-footer'>
-                <ul className='comment-list'>
+            <div className='comment-footer' ref={titleRef}>
+                <ul className='comment-list' >
                     <li className='post-author'>Posted By: {props.postAuthor}</li>
                     <li>{dateCalculator(props.postCreated)}</li>
                     <li  onClick={activateCallBacks} ><FaRegCommentDots /> {props.postComments}</li>

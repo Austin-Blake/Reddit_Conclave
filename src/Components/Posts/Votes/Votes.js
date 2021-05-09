@@ -8,9 +8,6 @@ export default function Votes(props) {
             <ul className='arrow'>
                 <li className='upArrow'><VscArrowUp /></li>
                 <li>{props.upVote}</li>
-                <li>UpVotes</li>
-                <li> </li>
-                <li> </li>
                 <li className='award'><FaAward /></li>
                 <li>{props.awards}</li>
             </ul>

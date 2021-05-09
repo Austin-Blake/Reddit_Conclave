@@ -2,29 +2,31 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1.3rem;
+    font-size: 1rem;
     height: fit-content;
     position: absolute;
     top: -2rem;
     left: 1rem;
+    margin: 1rem;
 }
 
 .arrow{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem 0 0 0;
+    padding: 1rem 0;
     list-style: none;
 }
+.arrow :nth-child(2){
+    padding: 0 0 1rem 0;
+}
 .upArrow{
-    font-size: 2rem;
+    font-size: 1rem;
     color: green;
 }
 .award{
     display: flex;
-    padding: 0 0 1rem 0;
+    padding:  0;
     list-style: none;
-}
-.award :first-child{
     color: blue;
 }
