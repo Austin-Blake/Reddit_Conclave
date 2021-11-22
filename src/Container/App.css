@@ -8,12 +8,6 @@
     margin: 2rem 0;
 }
 
-
-
-
-
-
-
 @media screen and (min-width: 300px) and (max-width: 640px) {
     .card {
         height: fit-content; /*100%*/
@@ -52,9 +46,15 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        border: 2px solid black;
-        padding: 1rem;
-        margin: 1rem;
+        
+    }
+    .search-input{
+        width: 40vw;
+        border-top: .1px solid rgba(255, 0, 0, 0.531);
+        border-bottom: .1px solid rgba(255, 0, 0, 0.531);
+        border-left: .1px solid rgba(255, 0, 0, 0.116);
+        border-right: .1px solid rgba(255, 0, 0, 0.116);
+        
     }
     .comment-component{
         grid-area: comments;
@@ -85,7 +85,7 @@
 }
 
 
-@media screen and (min-width: 640px) and (max-width: 1200px){
+@media screen and (min-width: 640px){
     .card {
         width: 70vw;
         margin: 3rem auto;
@@ -95,7 +95,7 @@
     
     }
     .subreddits{
-        width: 10rem;
+        width: 15rem;
         text-align: center;
         padding: 0;
     }
@@ -109,19 +109,22 @@
         margin-left: 1.5rem;
     }
     .post-description{
-        width: 40vw;
+        width: 30vw;
         padding: 0 1rem;
         line-height: 1.5rem;
         font-size: 1rem;
     }
     .search-container{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        width: 2vw;
+        height: 5vh;
         justify-content: center;
-        border: 2px solid black;
-        padding: 1rem;
-        margin: 1rem;
+        border: 2px solid red;
+    }
+    .search-input{
+        width: 30vw;
     }
     .comment-list{
         justify-content: space-between;

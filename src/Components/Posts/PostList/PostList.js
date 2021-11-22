@@ -13,14 +13,14 @@ export const PostList = () => {
     useEffect(() => getSubredditPosts(activeSubreddit)
     .then(response => {
         dispatch({ type: 'success', payload: response });
-        
-    }), [activeSubreddit, dispatch]);
+    }), [activeSubreddit]);
 
-    console.log('POSTDATA:', postData)
+
+    
      return (
          <section className='postlist'>
              
-                { isFetched ? postData.map(post => (
+             {isFetched ? postData.map(post => (
                     <section
                         className='card'
                         key={post.id}
@@ -31,7 +31,7 @@ export const PostList = () => {
                             awards={post.total_awards_received}
                             className='votes'
                             />
-                        <div id={post.id} className='post'>
+                     <div id={post.id} className='post'>
                             <h1 className='post-title'>{post.title.substring(0, 400)}</h1>
                             <div className='post-title-underline'></div>
                         

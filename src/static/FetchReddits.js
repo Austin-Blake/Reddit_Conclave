@@ -15,6 +15,14 @@ export const getSubreddits = async () => {
   
 };
 
+export const getSearchResults = async (term) => {
+  const response = await fetch(`${API_ROOT}/search.json?q=${term}`);
+  const json = await response.json();
+
+  return json.data.children.map((subreddit) => subreddit.data);
+  
+};
+
 export const getPostComments = async (permalink) => {
   const response = await fetch(`${API_ROOT}${permalink}.json`);
   const json = await response.json();

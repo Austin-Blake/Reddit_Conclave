@@ -1,22 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import MyContext from '../../../Context/MyContext';
 import './SearchBar.css';
+import { getSearchResults} from '../../../static/FetchReddits';
 
 export default function SearchBar() {
     const my_Context = useContext(MyContext);
-    const { term, dispatch, activeSubreddit} = my_Context;
-
-    const search = (e) => {
-        // e.preventDefault();
-        // axios.get(`https://www.reddit.com/search.json?q=${term || "popular"}`)
-        //   .then(response => {
-        //     const posts = response.data.children.map(post => post.data);
-        //     console.log("post:", posts);
-        //     dispatch({ type: 'success', payload: posts });
-        //   }).catch(error => {
-        //     dispatch({ type: 'error' })
-        //   })
-    }
+    const {dispatch, activeSubreddit,value, setValue,fullValue,setFullValue} = my_Context;
+ 
+  //get input value, send get req. set postData to new data
+  useEffect(() => {
+    getSearchResults(fullValue).then(response => {
+      dispatch({ type: 'success', payload: response });
+      setValue('')
+    });
+  }, [fullValue]);
     
   return (
     <>
@@ -29,17 +26,17 @@ export default function SearchBar() {
       <label htmlFor="search"></label>
       <input
         type="text"
-        value={term}
-        onChange={e => dispatch({
-          type: 'term',
-          payload: e.target.value
-        })}
-            placeholder={'Search in ' + activeSubreddit.substr(3).replace('/', '')}
+        value={value}
+            placeholder={'Search '}
             className='search-input'
+            onChange={e => setValue(e.target.value)}
       />
     </div>
-    <button className='search-btn' onClick={search}>Search</button>
+        <button className='search-btn' onClick={(e) => {
+          e.preventDefault(e); setFullValue(value)//stop refresh and set GET parm
+        }}>Search</button>
       </form>
       </>
     )
 }
+

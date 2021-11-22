@@ -12,7 +12,8 @@
           subreddits: state.subreddits.concat(action.payload),
         }
       }
-        case 'activeSubreddit':{
+      case 'activeSubreddit': {
+        console.log("activeSub" + action.payload);
         return {
           ...state,
           activeSubreddit: action.payload,

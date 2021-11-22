@@ -27,22 +27,23 @@ color:white;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    width: 10%;
     border: 3px solid red;
     border-radius: 50%;
-    padding: 3rem 0;
+    padding: 2rem;
     margin: 1rem;
     
     text-align: center;
 }
 .search-input{
     text-align: center;
-    height: 2rem;
+    width: 50vw;
+    height: 1rem;
     color: black;
-    border-top: 3px solid red;
-    border-bottom: 3px solid red;
-    border-left: none;
-    border-right: none;
+    border-top: .1px solid rgba(255, 0, 0, 0.531);
+    border-bottom: .1px solid rgba(255, 0, 0, 0.531);
+    border-left: .1px solid rgba(255, 0, 0, 0.116);
+    border-right: .1px solid rgba(255, 0, 0, 0.116);
 
 }
 .search-btn{
